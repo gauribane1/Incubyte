@@ -18,5 +18,12 @@ function add(numbers) {
       numbers = numbers.slice(numbers.indexOf("\n") + 1); // Remove custom delimiter line
     }
   }
+  // Step 3: Split numbers using the delimiter
+  const numArray = numbers.split(delimiter).map(Number);
+  // Step 4: Check for negative numbers
+  const negatives = numArray.filter((num) => num < 0);
+  if (negatives.length > 0) {
+    throw new Error(`Negative numbers not allowed: ${negatives.join(", ")}`);
+  }
 }
 module.exports = add;
