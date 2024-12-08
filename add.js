@@ -25,5 +25,7 @@ function add(numbers) {
   if (negatives.length > 0) {
     throw new Error(`Negative numbers not allowed: ${negatives.join(", ")}`);
   }
+  // Step 5: Sum all valid numbers
+  return numArray.reduce((sum, num) => sum + num, 0);
 }
 module.exports = add;
