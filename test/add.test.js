@@ -16,4 +16,21 @@ describe("add function", () => {
   test("should handle custom delimiters", () => {
     expect(add("//;\n1;2;3")).toBe(6);
   });
+  test("should handle custom delimiters with special characters like |", () => {
+    expect(add("//|\n4|5|6")).toBe(15);
+  });
+
+  test("should throw an error for a single negative number", () => {
+    expect(() => add("1,-2,3")).toThrow("Negative numbers not allowed: -2");
+  });
+
+  test("should throw an error for multiple negative numbers", () => {
+    expect(() => add("1,-2,-3")).toThrow(
+      "Negative numbers not allowed: -2, -3"
+    );
+  });
+
+  test("should return the sum for numbers with no negatives", () => {
+    expect(add("2,4,6")).toBe(12);
+  });
 });
